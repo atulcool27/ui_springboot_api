@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>System Login.</title>
+</head>
+<body>
+
+
+${SPRING_SECURITY_LAST_EXCEPTION.message}
+ <form name='login' action="/app/login" method='POST'>
+        <table>
+            <tr>
+                <td>UserName:</td>
+                <td><input type='text' name='username' value=''></td>
+            </tr>
+            <tr>
+                <td>Password:</td>
+                <td><input type='password' name='password' /></td>
+            </tr>
+            <tr>
+                <td colspan='2'><input name="submit" type="submit" value="submit" /></td>
+            </tr>
+        </table>
+   
+    </form>
+
+</body>
+</html>

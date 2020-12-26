@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+
+<head>
+<meta charset="ISO-8859-1">
+<title>New User Registration</title>
+
+<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.5.3/css/bootstrap.min.css} "/>
+</head>
+
+
+<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/1.16.0/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/4.5.3/js/bootstrap.min.js}"></script>
+
+
+
+
+
+
+<body>
+
+
+
+	<div class="container">
+		<ul class="nav nav-tabs" id="myTab" role="tablist">
+			<li class="nav-item waves-effect waves-light"><a
+				class="nav-link active text-primary display-4" id="sup-tab" data-toggle="tab" href="#sup"
+				role="tab" aria-controls="sup" aria-selected="true" >
+				Create an Account.
+				</a></li>
+		</ul>
+		<div class="tab-content" id="myTabContent">
+			<div class="tab-pane fade active show" id="sup" role="tabpanel"
+				aria-labelledby="sup-tab">
+				
+				
+				<!-- ************************ ERROR MODAL *******************************************************  -->
+
+		<div th:if="${signup_error}">
+				<div class="modal fade" id="errorModal" tabindex="-1" role="dialog">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title text-danger">Error!</h5>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body bg-danger">
+								<p th:each="msg : ${error_message}" class="text-white">
+									<span th:text="${msg}"></span><br>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				
+				<button type="button" id="errorBtn" class="btn btn-primary" data-toggle="modal" data-target="#errorModal" hidden="hidden">
+  						Launch Error modal
+				</button>
+				<script type="text/javascript">
+				       $("#errorBtn").click(); 
+				</script>
+				
+		</div>
+
+				<!-- ************************ ERROR MODAL *******************************************************  -->
+				
+				<!-- ************************ SUCCESS MODAL *******************************************************  -->
+
+		<div th:if="${signup_success}">
+				<div class="modal fade" id="successModal" tabindex="-1" role="dialog">
+					<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title text-success">Success!</h5>
+									<button type="button" class="close" data-dismiss="modal"
+										aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body bg-success">
+									<p th:each="msg : ${success_message}" class="text-white">
+										<span th:text="${msg}"></span><br>
+									</p>
+								</div>
+								<div class="modal-footer">
+									<a class="btn btn-primary" href="/app/login" role="button">Login</a>
+								</div>
+							</div>
+						</div>
+				</div>
+				
+				
+				<button type="button" id="successBtn" class="btn btn-primary" data-toggle="modal" data-target="#successModal" hidden="hidden">
+  						Launch Error modal
+				</button>
+				<script type="text/javascript">
+				       $("#successBtn").click(); 
+				</script>
+				
+		</div>
+
+				<!-- ************************ SUCCESS MODAL *******************************************************  -->
+
+				<form th:action="@{/app/signup/register}" method="POST"
+					th:object="${myuser}" class="form-group">
+					<div class="row col-12">
+						<div class="cell col-6">
+							<label for="username">Username</label> <span style="color: red;"> *</span><input type="text"
+								th:field="*{username}" class="form-control" required="required"><br> <label
+								for="password">Password</label> <span style="color: red;"> *</span><input type="password"
+								th:field="*{password}" class="form-control" required="required"><br> <label
+								for="email">Email Address</label> <span style="color: red;"> *</span><input type="email"
+								th:field="*{email}" class="form-control" required="required"><br> <label
+								for="phone">Phone Number</label> <span style="color: red;"> *</span><input type="number"
+								th:field="*{phone}" class="form-control" required="required"><br>
+						</div>
+						<div class="cell col-6">
+							<label for="state">State</label> <input type="text"
+								th:field="*{state}" class="form-control"><br> <label
+								for="gst_number">GST Number</label> <input type="text"
+								th:field="*{gst_number}" class="form-control"><br>
+
+
+							<label for="account_name">Full Name</label> <input type="text"
+								th:field="*{account_name}" class="form-control"><br>
+						</div>
+					</div>
+					
+					
+					<div class="row col-12 lead"><div class="cell col-3"><span style="color: red;"> *</span>Fields are mandatory.</div></div>
+					<br><div class="row col-12 lead"><div class="cell col-3 input-control"><input type="submit" value="submit" name="submit"></div>
+					</div>
+				</form>
+
+			</div>
+			
+		</div>
+
+	</div>
+
+
+	
+
+
+
+	<div class="container">
+
+
+</div>
+
+
+
+
+
+
+</body>
+</html>

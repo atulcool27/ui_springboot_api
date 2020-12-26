@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+
+<head>
+<meta charset="ISO-8859-1">
+<title>User Dashboard</title>
+<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.5.3/css/bootstrap.min.css} "/>
+</head>
+
+
+<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/1.16.0/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/4.5.3/js/bootstrap.min.js}"></script>
+
+<body>
+
+	<!--  ********************************** AUTOMATIC MENU GENERATOR ******************************************************* -->
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="#" th:text="${page_name}"></a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarNav" aria-controls="navbarNav"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+
+			<!--  ***************************** This Order the normal links without dropdowns  -->
+			<ul class="navbar-nav" th:each="mitem : ${mlist}">
+				<li class="nav-item"><a class="nav-link" href="#"
+					th:text="${mitem.url}"></a></li>
+			</ul>
+
+			<!--  ***************************** This handles the links with dropdowns  -->
+
+		<ul class="navbar-nav" th:each="entry : ${myMap}">
+		<li class="nav-item dropdown">
+			<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" 
+			role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:text="${entry.key}">  </a>
+			<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" >
+		    <div th:each="list : ${entry.value}">
+			<a class="dropdown-item" href="#" th:text="${list}"></a> 
+			</div>
+		</div>
+		</li>
+		</ul>
+		</div>
+	</nav>
+	<!--  ********************************** AUTOMATIC MENU GENERATOR ******************************************************* -->
+
+
+
+
+
+</body>
+</html>
