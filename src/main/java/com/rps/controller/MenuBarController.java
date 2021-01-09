@@ -21,8 +21,6 @@ public class MenuBarController
 	@Autowired
 	MenuBarService mbarserv;
 	
-	// Just a comment
-	
 	@RequestMapping("/list")
 	public List<MenuBar> getList()
 	{
